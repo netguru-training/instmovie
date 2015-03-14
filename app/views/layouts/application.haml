@@ -24,12 +24,14 @@
               %li
                 = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
             - else
-              - if current_user.admin
-                %li
-                  = link_to 'Admin panel', users_admin_path
-
               %li
-                = link_to 'Welcome, ' << current_user.email, users_profile_path
+                - if current_user.admin?
+                  = link_to 'Admin panel, ' + current_user.email, users_admin_path
+                - else
+                  = link_to 'Welcome, ' + (current_user.email != nil ? current_user.email : current_user.username), users_profile_path
+              - if current_user.access_token==nil
+                %li
+                  = link_to 'Connect to Instagram', user_omniauth_authorize_path(:instagram)
               %li
                 = link_to 'Sign out', destroy_user_session_path, :method => :delete
 
@@ -40,9 +42,4 @@
               %button.btn.btn-success
                 = 'Search'
     .container
-      - if not flash[:notice].nil?
-        %p.alert.alert-success= flash[:notice]
-      - if not flash[:error].nil?
-        %p.alert-alert-warning= flash[:error]
-
       = yield
