@@ -43,4 +43,8 @@
               .form-group.search
                 %select
     .container
+      - if not flash[:notice].nil?
+        %p.alert.alert-success= flash[:notice]
+      - if not flash[:error].nil?
+        %p.alert.alert-danger= flash[:error]
       = yield
