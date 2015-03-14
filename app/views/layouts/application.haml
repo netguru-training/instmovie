@@ -25,13 +25,15 @@
                 = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
             - else
               %li
-                = link_to current_user.firstname << '\'s Profile', profile_show_path
+                = link_to 'Welcome, ' << current_user.email, users_profile_path
               %li
                 = link_to 'Sign out', destroy_user_session_path, :method => :delete
 
-          %form.navbar-form.navbar-right
-            .form-group
-              %input.form-control
-            %button.btn.btn-success
-              = 'Search'
-    = yield
+          - if current_user.nil? or current_user.admin
+            %form.navbar-form.navbar-right
+              .form-group
+                %input.form-control
+              %button.btn.btn-success
+                = 'Search'
+    .container
+      = yield

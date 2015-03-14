@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+/* dark themes require dark background */
+body {
+  background-color: #060606;
+}
+
+/* move page content away from fixed navbar. */
+.container {
+  margin-top: 50px;
+}
