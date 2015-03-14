@@ -1,0 +1,37 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }/
+    %title Instamoview
+    %meta{ content: 'IE=Edge,chrome=1', 'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  %body
+    .navbar.navbar-default.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand
+            = 'Instmovie'
+
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if not user_signed_in?
+              %li
+                = link_to 'Sign in', controller: 'devise/sessions', action: 'new'
+              %li
+                = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
+            - else
+              %li
+                = link_to current_user.firstname << '\'s Profile', profile_show_path
+              %li
+                = link_to 'Sign out', destroy_user_session_path, :method => :delete
+
+          %form.navbar-form.navbar-right
+            .form-group
+              %input.form-control
+            %button.btn.btn-success
+              = 'Search'
+    = yield

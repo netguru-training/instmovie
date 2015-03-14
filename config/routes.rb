@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :movies
 
+  root 'application#index'
+
   get 'users/profile'
-  get 'users/admin' 
+  get 'users/admin'
 end
