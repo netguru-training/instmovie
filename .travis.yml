@@ -4,7 +4,7 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['SECRET_KEY_BASE'] %>
+    secure: <%= ENV['API_KEY_SECURE'] %>
   run:
   - rake db:migrate
   app: instmovie
