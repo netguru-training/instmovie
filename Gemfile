@@ -32,24 +32,13 @@ gem 'jbuilder', '~> 2.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-end
-
-
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'figaro', '>= 1.0.0.rc1'
 gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
+gem 'decent_exposure'
 
 group :development do
   gem 'better_errors'
@@ -62,11 +51,15 @@ group :development do
 end
 
 group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'pry-rails'
   gem 'pry-rescue'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
 end
 
 group :production do
