@@ -82,4 +82,4 @@ pickle-email-*.html
 *.sublime*
 
 # Ignore Gemfile.lock because of different enviroments
-Gemfile.lock
+#Gemfile.lock
