@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   #after_action :redirect_to_apprioprate_profile, if: :devise_controller? && :devise
   protect_from_forgery with: :exception
 
+  def index
+  end
+
   protected
     /def redirect_to_apprioprate_profile
       if current_user.admin?
@@ -11,7 +14,6 @@ class ApplicationController < ActionController::Base
       end
     end/
     def after_sign_in_path_for(resource)
-      binding.pry
       if current_user.admin?
         redirect_to users_admin_path
       else
@@ -26,4 +28,5 @@ class ApplicationController < ActionController::Base
         redirect_to users_profile_path
       end
     end
+
 end
