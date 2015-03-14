@@ -4,25 +4,26 @@ class ApplicationController < ActionController::Base
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
-
+  
   def index
   end
 
   protected
     def after_sign_in_path_for(resource)
-      if current_user.admin?
-        redirect_to users_admin_path
-      else
-        redirect_to users_profile_path
-      end
+      check_admin
     end
 
     def after_sign_up_path_for(resource)
+      check_admin
+    end
+
+    def check_admin
       if current_user.admin?
-        redirect_to users_admin_path
+        users_admin_url
       else
-        redirect_to users_profile_path
+        users_profile_url
       end
     end
 
 end
+

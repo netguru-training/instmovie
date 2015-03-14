@@ -2,11 +2,11 @@
 
 %p
   %b Content:
-  = @review.content
+  = review.content
 %p
   %b Rating:
-  = @review.rating
+  = review.rating
 
-= link_to 'Edit', edit_review_path(@review)
+= link_to 'Edit', edit_review_path(review)
 \|
 = link_to 'Back', reviews_path
