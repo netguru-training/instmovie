@@ -1,3 +1,3 @@
 class TagRelationship < ActiveRecord::Base
-  belongs_to :tag, polymorphic: true
+  belongs_to :taggable, polymorphic: true
 end
