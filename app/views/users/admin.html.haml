@@ -6,28 +6,32 @@
       =link_to 'Reviews', reviews_path
 
     %ul.list-group
-      - @reviews.each do |review|
+      - reviews.each do |review|
         %li.list-group-item
-          = link_to review.movie.title, movie_path(review.movie.id)
-          = ' reviewed: "' << review.content[0..30] << ('...' if review.content.length > 30).to_s << '" around '
-          %small
-            = time_ago_in_words( review.created_at )
+          .btn-group
+            = link_to 'Remove', review_path( review.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+            = link_to 'Edit', edit_review_path( review.id ), class: "btn btn-primary btn-xs"
+            = link_to 'View', review_path( review.id ), class: "btn btn-info btn-xs"
 
-          = link_to 'Remove', review_path( review.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-          = link_to 'Edit', edit_review_path( review.id ), class: "btn btn-primary btn-xs"
-          = link_to 'View', review_path( review.id ), class: "btn btn-info btn-xs"
+          .list-group-item-wrapper
+            = link_to review.movie.title, movie_path(review.movie.id)
+            = ' reviewed: "' << review.content[0..30] << ('...' if review.content.length > 30).to_s << '" around '
+            %small
+              = time_ago_in_words( review.created_at )
 
   %span.col-md-6
     %h3
       =link_to 'Movies', movies_path
 
     %ul.list-group
-      - @movies.each do |movie|
+      - movies.each do |movie|
         %li.list-group-item
-          = link_to( movie.title, movie_path(movie.id) ) << ', '
-          %small
-            = 'added around ' << time_ago_in_words( movie.created_at )
+          .btn-group
+            = link_to 'Remove', movie_path( movie.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+            = link_to 'Edit', edit_movie_path( movie.id ), class: "btn btn-primary btn-xs"
+            = link_to 'View', movie_path( movie.id ), class: "btn btn-info btn-xs"
 
-          = link_to 'Remove', movie_path( movie.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-          = link_to 'Edit', edit_movie_path( movie.id ), class: "btn btn-primary btn-xs"
-          = link_to 'View', movie_path( movie.id ), class: "btn btn-info btn-xs"
+          .list-group-item-wrapper
+            = link_to( movie.title, movie_path(movie.id) ) << ', '
+            %small
+              = 'added around ' << time_ago_in_words( movie.created_at )

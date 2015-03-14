@@ -14,13 +14,20 @@ body {
 
 .list-group-item {
   color: white;
+  clear: both;
 
-  a.btn {
+  .list-group-item-wrapper {
+    max-width: calc( 100% - 140px );
+  }
+
+  .btn-group {
     float: right;
     margin-left: .6em;
+    a.btn {
 
-    &:visited {
-      color: white;
+      &:visited {
+        color: white;
+      }
     }
   }
 }

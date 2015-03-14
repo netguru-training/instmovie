@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   end
 
   def admin
-    @movies = Movie.order(created_at: :desc).all
-    @reviews = Review.order(created_at: :desc).all
+
   end
+
+  expose(:movies)
+  expose(:reviews)
 end
