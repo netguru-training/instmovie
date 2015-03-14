@@ -1,7 +1,7 @@
-%h1 Editing review
+%h1 #{t('views.reviews.edit.title')}
 
 = render 'form'
 
-= link_to 'Show', review
+= link_to link_to t('views.common.show'), review
 \|
-= link_to 'Back', reviews_path
+= link_to link_to t('views.common.back'), reviews_path
