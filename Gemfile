@@ -38,6 +38,7 @@ gem 'figaro', '>= 1.0.0.rc1'
 gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
+gem 'decent_exposure'
 
 group :development do
   gem 'better_errors'
