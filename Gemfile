@@ -22,7 +22,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 
-
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -39,6 +38,7 @@ gem 'haml-rails'
 gem 'pg'
 gem 'simple_form'
 gem 'decent_exposure'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'better_errors'
