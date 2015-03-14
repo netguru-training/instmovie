@@ -1,0 +1,25 @@
+.devise {
+  width: 40%;
+  margin-bottom: 20px;
+
+  label {
+    margin-top: 1.6em;
+    width: 100%;
+    display: block;
+    color: #eee;
+  }
+
+  input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+  }
+
+  span.hint {
+    color: #ddd;
+  }
+
+  &.sign-up {
+    input[name=commit] {
+      margin-top: 2em;
+    }
+  }
+}
