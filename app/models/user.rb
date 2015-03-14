@@ -4,5 +4,6 @@ class User < ActiveRecord::Base
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:instagram]
 
-  has_many :tags, :through => :tag_relationship
+  has_many :tag_relationships, :through => :tags, class_name: 'TagRelationships'
+  has_many :tags
 end
