@@ -11,8 +11,8 @@
   %br/
 
 - if current_user.admin?
-  = link_to 'Edit', edit_movie_path(movie)
+  = link_to link_to t('views.common.edit'), edit_movie_path(movie)
   \|
-= link_to 'Back', movies_path
+= link_to link_to t('views.common.back'), movies_path
 
-
+= render 'reviews/index'
