@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.1.5'
 gem 'rails', '4.2.0'
@@ -40,7 +39,7 @@ gem 'simple_form'
 gem 'decent_exposure'
 gem 'jquery-ui-rails'
 gem 'paperclip-dropbox', '>= 1.1.7'
-gem 'ratyrate'
+gem 'ratyrate', '1.2.2.alpha'
 
 group :development do
   gem 'better_errors'

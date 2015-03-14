@@ -5,3 +5,5 @@ $ ->
   setTimeout ->
     $( ".alert" ).off( "click" ).slideUp()
   , 4000
+
+  $( "select.search" ).select2();
