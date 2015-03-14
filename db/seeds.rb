@@ -4,6 +4,7 @@ User.where(email: 'foo@bar.com').first_or_create(password: 'foo4barcode')
 User.where(email: 'jan@kowal.ski').first_or_create(password: 'jan_kowal')
 User.where(email: 'robert@bara.theon').first_or_create(password: 'ours_is_fury')
 User.where(email: 'jaime@lanni.ster').first_or_create(password: 'golden_hair')
+
 Movie.where(title: 'Godfather').first_or_create
 Movie.where(title: 'The Shawshank Redemption').first_or_create
 Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring')
@@ -14,3 +15,20 @@ Movie.where(title: 'Rambo').first_or_create
 Movie.where(title: 'The Silence of the Lambs').first_or_create
 Movie.where(title: 'Se7en').first_or_create
 Movie.where(title: 'Saving Private Ryan').first_or_create
+
+Tag.where(name: 'Drama')
+Tag.where(name: 'Comedy')
+Tag.where(name: 'Crime')
+Tag.where(name: 'Thriller')
+Tag.where(name: 'Horror')
+Tag.where(name: 'Adventure')
+Tag.where(name: 'Action')
+Tag.where(name: 'Fantasy')
+Tag.where(name: 'Sci-Fi')
+Tag.where(name: 'Biography')
+Tag.where(name: 'History')
+Tag.where(name: 'Romance')
+Tag.where(name: 'Documentary')
+Tag.where(name: 'War')
+Tag.where(name: 'Musical')
+Tag.where(name: 'Mystery')
