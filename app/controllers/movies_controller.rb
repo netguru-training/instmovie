@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
   expose(:movies)
   expose(:movie, attributes: :movie_params)
 
@@ -24,7 +26,14 @@ class MoviesController < ApplicationController
   end
 
   private
-  def movie_params
-    params.require(:movie).permit(:title)
-  end
+    def movie_params
+      params.require(:movie).permit(:title)
+    end
+
+    def check_admin
+      unless current_user.admin?
+        flash[:error] = "You must be admin."
+        redirect_to new_user_session_path
+      end
+    end
 end

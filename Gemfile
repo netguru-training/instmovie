@@ -64,13 +64,17 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'unicorn'
+  # gem 'unicorn'
 end
 
 group :test do
   gem 'capybara'
-  gem 'database_cleaner'
-  gem 'launchy'
-  gem 'selenium-webdriver'
+  # gem 'database_cleaner'
+  # gem 'launchy'
+  # gem 'selenium-webdriver'
 end
 
+gem 'tzinfo-data', platforms: [:mingw, :mswin]
+gem 'instagram'
+gem 'dotenv-rails'
+gem 'omniauth-instagram'
