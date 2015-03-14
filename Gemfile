@@ -39,6 +39,7 @@ gem 'pg'
 gem 'simple_form'
 gem 'decent_exposure'
 gem 'jquery-ui-rails'
+gem 'paperclip-dropbox', '>= 1.1.7'
 
 group :development do
   gem 'better_errors'
