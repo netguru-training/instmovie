@@ -18,6 +18,6 @@ class UsersController < ApplicationController
   end
 
   def omniauth_callbacks
-    binding.pry
+
   end
 end
