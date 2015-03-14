@@ -15,7 +15,6 @@ body {
 .list-group-item {
   color: white;
 
-
   a.btn {
     float: right;
     margin-left: .6em;
@@ -23,5 +22,51 @@ body {
     &:visited {
       color: white;
     }
+  }
+}
+
+.admin {
+  h3 {
+  }
+}
+
+.navbar {
+  .container-fluid {
+    a {
+      transition: color .3s ease-out;
+    }
+  }
+
+  button {
+    transition: background-color .3s ease-out;
+  }
+}
+
+.admin-panel-entry {
+}
+
+// overwite bootstrap, like that's ever a good idea
+html body {
+  a {
+    color: #ccc;
+
+    &:visited {
+      color: #eee;
+    }
+
+    &:active,
+    &:focus {
+      color: #bbb;
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.container {
+  .alert {
+    margin-top: .6em;
   }
 }
