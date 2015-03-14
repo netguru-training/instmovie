@@ -13,9 +13,13 @@
       %tr
         %td= movie.title
         %td= link_to 'Show', movie
-        %td= link_to 'Edit', edit_movie_path(movie)
-        %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - if current_user.admin?
+          %td= link_to 'Edit', edit_movie_path(movie)
+          %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        - else
+          %td
+          %td
 
 %br
-
-= link_to 'New Movie', new_movie_path
+- if current_user.admin?
+  = link_to 'New Movie', new_movie_path
