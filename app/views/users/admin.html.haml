@@ -6,7 +6,7 @@
       =link_to 'Reviews', reviews_path
 
     %ul.list-group
-      - @reviews.each do |review|
+      - reviews.each do |review|
         %li.list-group-item
           = review.title << ', '
           %small
@@ -21,7 +21,7 @@
       =link_to 'Movies', movies_path
 
     %ul.list-group
-      - @movies.each do |movie|
+      - movies.each do |movie|
         %li.list-group-item
           = movie.title << ', '
           %small
