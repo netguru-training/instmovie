@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   has_many :tag_relationships, :through => :tags, class_name: 'TagRelationships'
   has_many :tags
-  
+
   ratyrate_rater
 
   def self.from_omniauth(auth)
@@ -15,6 +15,4 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
-
-
 end

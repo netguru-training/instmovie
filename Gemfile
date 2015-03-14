@@ -81,3 +81,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'instagram'
 gem 'dotenv-rails'
 gem 'omniauth-instagram'
+gem 'pg_search'
