@@ -14,7 +14,6 @@ class ApplicationController < ActionController::Base
       end
     end/
     def after_sign_in_path_for(resource)
-      binding.pry
       if current_user.admin?
         redirect_to users_admin_path
       else
