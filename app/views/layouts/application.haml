@@ -8,8 +8,8 @@
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-    #link{ href: 'http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css', rel: 'stylesheet'}
-    #script{ src:'//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js', type: 'text/javascript'}/
+    %link{ href: 'http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css', rel: 'stylesheet'}/
+    %script(src='http://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js')
 
   %body
     .navbar.navbar-default.navbar-fixed-top
@@ -26,11 +26,12 @@
               %li
                 = link_to 'Sign up', controller: 'devise/registrations', action: 'new'
             - else
+              - if current_user.admin?
+                %li
+                  = link_to 'Admin panel', users_admin_path
+
               %li
-                - if current_user.admin?
-                  = link_to 'Admin panel, ' + current_user.email, users_admin_path
-                - else
-                  = link_to 'Welcome, ' + (current_user.email != nil ? current_user.email : current_user.username), users_profile_path
+                = link_to 'Welcome, ' + (current_user.email != nil ? current_user.email : current_user.username), users_profile_path
               - if current_user.access_token==nil
                 %li
                   = link_to 'Connect to Instagram', user_omniauth_authorize_path(:instagram)
@@ -39,10 +40,7 @@
 
           - if current_user.nil? or current_user.admin
             %form.navbar-form.navbar-right
-              .form-group
-                %input.form-control
-                %select.search
-              %button.btn.btn-success
-                = 'Search'
+              .form-group.search
+                %select
     .container
       = yield

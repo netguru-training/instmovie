@@ -25,6 +25,25 @@ class MoviesController < ApplicationController
     redirect_to users_admin_path, notice: 'Movie was successfully destroyed.'
   end
 
+  def search
+    movies = Movie.sounds_kinda_like(params[:q]).all
+    results = []
+
+    movies.each_with_index do |movie, index|
+      results.push({
+        id: movie.id,
+        count: movie.reviews.length,
+        movie: movie,
+        title: movie.title,
+        rating: movie.reviews.calculate( "average", "rating" ).round( 2 ),
+        reviews_count: movie.reviews.count,
+        uri: url_for( controller: "movies", action: "show", id: movie.id )
+      })
+    end
+
+    render :json => results
+  end
+
   private
 
   def movie_params
