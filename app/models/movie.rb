@@ -1,4 +1,4 @@
 class Movie < ActiveRecord::Base
-  has_many :rewievs
+  has_many :reviews
 
 end
