@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
 
   def destroy
     movie.destroy
-    redirect_to movies_url, notice: 'Movie was successfully destroyed.'
+    redirect_to users_admin_path, notice: 'Movie was successfully destroyed.'
   end
 
   private

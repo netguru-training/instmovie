@@ -9,16 +9,16 @@
       %th
 
   %tbody
+    %ul.list-group.movies
     - movies.each do |movie|
-      %tr
-        %td= movie.title
-        %td= link_to 'Show', movie
-        - if current_user.admin?
-          %td= link_to 'Edit', edit_movie_path(movie)
-          %td= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
-        - else
-          %td
-          %td
+      %li.list-group-item
+        = movie.title << ', '
+        %small
+          = 'added ' << time_ago_in_words( movie.created_at )
+
+          %button.btn.btn-primary= link_to 'Show', movie
+          %button.btn.btn-= link_to 'Edit', edit_movie_path(movie)
+          %button= link_to 'Destroy', movie, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 - if current_user.admin?

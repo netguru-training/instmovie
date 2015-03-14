@@ -12,8 +12,16 @@ body {
   margin-top: 50px;
 }
 
-.admin {
-  .list-group-item {
-    color: white;
+.list-group-item {
+  color: white;
+
+
+  a.btn {
+    float: right;
+    margin-left: .6em;
+
+    &:visited {
+      color: white;
+    }
   }
 }
