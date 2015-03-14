@@ -16,19 +16,19 @@ Movie.where(title: 'The Silence of the Lambs').first_or_create
 Movie.where(title: 'Se7en').first_or_create
 Movie.where(title: 'Saving Private Ryan').first_or_create
 
-Tag.where(name: 'Drama')
-Tag.where(name: 'Comedy')
-Tag.where(name: 'Crime')
-Tag.where(name: 'Thriller')
-Tag.where(name: 'Horror')
-Tag.where(name: 'Adventure')
-Tag.where(name: 'Action')
-Tag.where(name: 'Fantasy')
-Tag.where(name: 'Sci-Fi')
-Tag.where(name: 'Biography')
-Tag.where(name: 'History')
-Tag.where(name: 'Romance')
-Tag.where(name: 'Documentary')
-Tag.where(name: 'War')
-Tag.where(name: 'Musical')
-Tag.where(name: 'Mystery')
+Tag.where(name: 'Drama').first_or_create
+Tag.where(name: 'Comedy').first_or_create
+Tag.where(name: 'Crime').first_or_create
+Tag.where(name: 'Thriller').first_or_create
+Tag.where(name: 'Horror').first_or_create
+Tag.where(name: 'Adventure').first_or_create
+Tag.where(name: 'Action').first_or_create
+Tag.where(name: 'Fantasy').first_or_create
+Tag.where(name: 'Sci-Fi').first_or_create
+Tag.where(name: 'Biography').first_or_create
+Tag.where(name: 'History').first_or_create
+Tag.where(name: 'Romance').first_or_create
+Tag.where(name: 'Documentary').first_or_create
+Tag.where(name: 'War').first_or_create
+Tag.where(name: 'Musical').first_or_create
+Tag.where(name: 'Mystery').first_or_create
