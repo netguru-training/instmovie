@@ -84,3 +84,4 @@ pickle-email-*.html
 # Ignore Gemfile.lock because of different enviroments
 #Gemfile.lock
 
+erd.pdf
