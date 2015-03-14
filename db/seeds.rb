@@ -1,13 +1,13 @@
-godfather = Movie.where(title: 'Godfather').first_or_create
-shawshank = Movie.where(title: 'The Shawshank Redemption').first_or_create
-lotr = Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring').first_or_create
-dark_knight = Movie.where(title: 'The Dark Knight').first_or_create
-fight_club = Movie.where(title: 'Fight club').first_or_create
-inception = Movie.where(title: 'Inception').first_or_create
-rambo = Movie.where(title: 'Rambo').first_or_create
-silence = Movie.where(title: 'The Silence of the Lambs').first_or_create
-seven = Movie.where(title: 'Se7en').first_or_create
-ryan = Movie.where(title: 'Saving Private Ryan').first_or_create
+godfather = Movie.where(title: 'Godfather', instagram_tag: 'godfathermovie').first_or_create
+shawshank = Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemptionmovie').first_or_create
+lotr = Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring', instagram_tag: 'lotrmovie').first_or_create
+dark_knight = Movie.where(title: 'The Dark Knight', instagram_tag: 'darkknightmovie').first_or_create
+fight_club = Movie.where(title: 'Fight club', instagram_tag: 'fightclubmovie').first_or_create
+inception = Movie.where(title: 'Inception', instagram_tag: 'inceptionmovie').first_or_create
+rambo = Movie.where(title: 'Rambo', instagram_tag: 'rambomovie').first_or_create
+silence = Movie.where(title: 'The Silence of the Lambs', instagram_tag: 'thesilenceofthelambs').first_or_create
+seven = Movie.where(title: 'Se7en', instagram_tag: 'sevenmovie').first_or_create
+ryan = Movie.where(title: 'Saving Private Ryan', instagram_tag: 'savingprivateryan').first_or_create
 
 User.where(email: "admin@netguru.co").first_or_create(password: "adminadmin", admin: true)
 User.where(email: 'john@doe.com').first_or_create(password: 'pass2word')
