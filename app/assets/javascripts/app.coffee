@@ -51,3 +51,14 @@ $ ->
             else "person" )
           else "Not yet rated" ) +
         "</small></li></a>" )
+
+  $( ".navbar-brand" )
+    .on "mouseenter", ->
+      $( this ).addClass "animated tada hovered"
+    .on "mouseleave", ->
+      $this = $ this
+      $( this ).removeClass "hovered"
+      setTimeout ->
+        if not $this.hasClass "hovered"
+          $this.removeClass "animated tada"
+      , 1000
