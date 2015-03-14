@@ -80,3 +80,6 @@ pickle-email-*.html
 
 # Sublime editor project files
 *.sublime*
+
+# Ignore Gemfile.lock because of different enviroments
+Gemfile.lock
