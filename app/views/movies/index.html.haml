@@ -18,7 +18,7 @@
 
           %button.btn.btn-primary= link_to t('views.common.show'), movie
           %button.btn.btn-= link_to t('views.common.edit'), edit_movie_path(movie)
-          %button= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.movies.common.confirm_destroy') }
+          %button= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.common.confirm_destroy') }
 
 %br
 - if current_user.admin?
