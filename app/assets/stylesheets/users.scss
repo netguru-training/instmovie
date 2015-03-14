@@ -1,3 +1,19 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* dark themes require dark background */
+body {
+  background-color: #060606;
+}
+
+/* move page content away from fixed navbar. */
+.container {
+  margin-top: 50px;
+}
+
+.admin {
+  .list-group-item {
+    color: white;
+  }
+}
