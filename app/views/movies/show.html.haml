@@ -1,9 +1,20 @@
 %p#notice= notice
 
 %p
-  %b Title:
+  %b #{t('views.movies.show.title')}:
   = movie.title
+  = imdb_style_rating_for movie, current_user
+  %br/
+  #{t('views.movies.show.visual_effects')}: #{rating_for movie, "visual_effects"}
+  %br/
+  #{t('views.movies.show.scenario')}: #{rating_for movie, "scenario"}
+  %br/
+  #{t('views.movies.show.actors')}: #{rating_for movie, "actors"}
+  %br/
+
 - if current_user.admin?
   = link_to 'Edit', edit_movie_path(movie)
   \|
 = link_to 'Back', movies_path
+
+

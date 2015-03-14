@@ -1,0 +1,15 @@
+en:
+  views:
+    movies:
+      show:
+        title: Title
+        scenario: Scenario
+        visual_effects: Visual effects
+        actors: Actors
+      edit:
+        title: Editing movie
+      index:
+        title: Listing movies
+        movie_title: Title
+      new:
+        title: New movie
