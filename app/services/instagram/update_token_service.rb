@@ -12,11 +12,11 @@ module Instagram
     private
 
     def update_token!
-      fail NotImplementedError, 'not implemented yet'
+      @user.update(access_token: fetch_token)
     end
 
     def fetch_token
-      @payload['omniauth.auth']['credentials']['token']
+      @payload['credentials']['token']
     end
   end
 end

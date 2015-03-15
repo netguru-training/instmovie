@@ -33,6 +33,9 @@
               - if current_user.access_token.nil?
                 %li
                   = link_to 'Connect to Instagram', user_omniauth_authorize_path(:instagram)
+              - if current_user.avatar
+                %li
+                  %img.img-thumbnail{src: current_user.avatar, style: 'max-height:42px; padding:0px; margin:4px; border:0px;'}
               %li
                 = link_to 'Sign out', destroy_user_session_path, method: :delete
 

@@ -8,9 +8,13 @@ class User < ActiveRecord::Base
   ratyrate_rater
 
   def self.from_omniauth(auth)
-    where(username: auth.uid).first_or_create do |user|
-      user.username = auth.uid
+    where(username: auth['info']['nickname']).first_or_create! do |user|
+      user.username = auth['info']['nickname']
       user.password = Devise.friendly_token[0,20]
     end
+  end
+
+  def email_required?
+    false
   end
 end
