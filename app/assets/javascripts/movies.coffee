@@ -1,7 +1,5 @@
 $ ->
   $("#js-tag-selector").select2
-    id: (e) ->
-      e.id
     placeholder: "Movie tags"
     ajax:
       url: '/tags/ajax_get_list'
@@ -18,6 +16,5 @@ $ ->
           results.push
             id: item.id
             text: item.name
-        debugger
         return { results: results }
     cache: true
