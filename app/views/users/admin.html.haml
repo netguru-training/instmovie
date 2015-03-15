@@ -34,6 +34,7 @@
             = link_to 'Remove', movie_path( movie.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
             = link_to 'Edit', edit_movie_path( movie.id ), class: "btn btn-primary btn-xs"
             = link_to 'View', movie_path( movie.id ), class: "btn btn-info btn-xs"
+            = link_to 'Add tags', add_tags_path(movie.id), class: "btn btn-primary btn-xs"
 
           .list-group-item-wrapper
             = link_to( movie.title, movie_path(movie.id) ) << ', '
