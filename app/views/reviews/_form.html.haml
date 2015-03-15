@@ -2,8 +2,8 @@
   = f.error_notification
 
   .form-inputs
-    = f.text_area :content
-
+    = f.text_area :content, class:'form-control', rows: '3'
+  %br
 
   .form-actions.for-entry
     = f.button :submit, class: "btn btn-success"
