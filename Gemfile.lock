@@ -112,6 +112,7 @@ GEM
       thor (~> 0.14)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     haml (4.0.6)
       tilt
     haml-rails (0.9.0)
@@ -339,6 +340,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   figaro (>= 1.0.0.rc1)
+  gravtastic
   haml-rails
   html2haml
   instagram

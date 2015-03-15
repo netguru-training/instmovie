@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   ratyrate_rater
 
+  include Gravtastic
+  gravtastic
+
   def self.from_omniauth(auth)
     where(username: auth['info']['nickname']).first_or_create! do |user|
       user.username = auth['info']['nickname']
