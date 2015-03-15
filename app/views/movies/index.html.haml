@@ -12,7 +12,7 @@
     %ul.list-group.movies
     - movies.each do |movie|
       %li.list-group-item
-        = image_tag movie.picture.url
+        = image_tag movie.image_url
         = movie.title << ', '
         %small
           = 'added ' << time_ago_in_words( movie.created_at )
