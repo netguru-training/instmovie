@@ -9,12 +9,25 @@ silence = Movie.where(title: 'The Silence of the Lambs', instagram_tag: 'thesile
 seven = Movie.where(title: 'Se7en', instagram_tag: 'sevenmovie').first_or_create
 ryan = Movie.where(title: 'Saving Private Ryan', instagram_tag: 'savingprivateryan').first_or_create
 
-User.where(email: "admin@netguru.co").first_or_create(password: "adminadmin", admin: true)
+admin = User.where(email: "admin@netguru.co").first_or_create(password: "adminadmin", admin: true)
 User.where(email: 'john@doe.com').first_or_create(password: 'pass2word')
 User.where(email: 'foo@bar.com').first_or_create(password: 'foo4barcode')
 User.where(email: 'jan@kowal.ski').first_or_create(password: 'jan_kowal')
 User.where(email: 'robert@bara.theon').first_or_create(password: 'ours_is_fury')
 User.where(email: 'jaime@lanni.ster').first_or_create(password: 'golden_hair')
+
+
+movie = Movie.where(title: 'Godfather', instagram_tag: 'godfathermovie').first_or_create
+Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemption').first_or_create
+Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring', instagram_tag: 'lotr').first_or_create
+Movie.where(title: 'The Dark Knight', instagram_tag: 'darkknight').first_or_create
+Movie.where(title: 'Fight club', instagram_tag: 'fightclubmovie').first_or_create
+Movie.where(title: 'Inception', instagram_tag: 'inceptionmovie').first_or_create
+Movie.where(title: 'Rambo', instagram_tag: 'rambomovie').first_or_create
+Movie.where(title: 'The Silence of the Lambs', instagram_tag: 'silenceofthelambs').first_or_create
+Movie.where(title: 'Se7en', instagram_tag: 'se7enmovie').first_or_create
+Movie.where(title: 'Saving Private Ryan', instagram_tag: 'savingprivateryan').first_or_create
+
 
 Tag.where(name: 'Drama').first_or_create
 Tag.where(name: 'Comedy').first_or_create
@@ -70,3 +83,29 @@ Review.where(content: 'A well crafted artwork.', rating: 5, movie_id: seven.id).
 
 Review.where(content: 'Not very accurate.', rating: 2, movie_id: ryan.id).first_or_create
 Review.where(content: 'Tom Hanks rocks!', rating: 5, movie_id: ryan.id).first_or_create
+
+Rate.where(rater_id: admin.id, rateable_id: movie.id, rateable_type: 'Movie', stars: 2, dimension: 'scenario').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: movie.id, rateable_type: 'Movie', stars: 3, dimension: 'scenario').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: movie.id, rateable_type: 'Movie', stars: 5, dimension: 'scenario').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: movie.id, rateable_type: 'Movie', stars: 5, dimension: 'scenario').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: movie.id, rateable_type: 'Movie', stars: 1, dimension: 'scenario').first_or_create
+
+Rate.where(rater_id: admin.id, rateable_id: 2, rateable_type: 'Movie', stars: 2, dimension: 'visual_effects').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 3, rateable_type: 'Movie', stars: 3, dimension: 'visual_effects').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 4, rateable_type: 'Movie', stars: 5, dimension: 'visual_effects').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 1, rateable_type: 'Movie', stars: 5, dimension: 'visual_effects').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 1, rateable_type: 'Movie', stars: 1, dimension: 'visual_effects').first_or_create
+
+Rate.where(rater_id: admin.id, rateable_id: 4, rateable_type: 'Movie', stars: 2, dimension: 'actors').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 1, rateable_type: 'Movie', stars: 3, dimension: 'actors').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 5, rateable_type: 'Movie', stars: 5, dimension: 'actors').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 6, rateable_type: 'Movie', stars: 5, dimension: 'actors').first_or_create
+Rate.where(rater_id: admin.id, rateable_id: 1, rateable_type: 'Movie', stars: 1, dimension: 'actors').first_or_create
+
+Tagging.where(tag_id: 1, taggable: movie).first_or_create
+Tagging.where(tag_id: 2, taggable: movie).first_or_create
+Tagging.where(tag_id: 3, taggable: movie).first_or_create
+Tagging.where(tag_id: 4, taggable: movie).first_or_create
+Tagging.where(tag_id: 5, taggable: movie).first_or_create
+Tagging.where(tag_id: 6, taggable: movie).first_or_create
+
