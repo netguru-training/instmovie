@@ -5,10 +5,19 @@ class UsersController < ApplicationController
     Movie.order("created_at DESC").all
   }
   expose(:reviews) {
-    Review.order("created_at DESC").all
+    reviews = Review.order("created_at DESC")
+
+    if action_name == "profile"
+      reviews = reviews.where(user_id: current_user.id)
+    end
+
+    reviews.all
   }
 
   def omniauth_callbacks
 
+  end
+
+  def profile
   end
 end

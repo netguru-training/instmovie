@@ -1,1 +1,23 @@
 %h2 Users profile
+
+.row.admin
+  %span.col-md-12
+    %h3
+      ='My reviews'
+
+    %ul.list-group
+      - reviews.each_with_index do |review, index|
+        %li.list-group-item{class: "#{index > 10 ? 'hidden' : ''}"}
+          .btn-group
+            = link_to 'View', movie_review_path( review.id, review.movie.id ), class: "btn btn-info btn-xs"
+
+          .list-group-item-wrapper
+            = link_to review.movie.title, movie_path(review.movie.id)
+            = ' reviewed: "' << review.content[0..30] << ('...' if review.content.length > 30).to_s << '" around '
+            %small
+              = time_ago_in_words( review.created_at )
+      - if reviews.length > 10
+        %li.list-group-item.more More
+
+    - if reviews.length == 0
+      .no-revies= 'You don\'t have any reviews yet!'
