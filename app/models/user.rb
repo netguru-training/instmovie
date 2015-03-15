@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, omniauth_providers: [:instagram]
 
-  has_many :tag_relationships, through: :tags, class_name: 'TagRelationships'
-  has_many :tags
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
 
   ratyrate_rater
 
