@@ -2,9 +2,8 @@
   = f.error_notification
 
   .form-inputs
-   = f.text_area :content
+    = f.text_area :content
 
 
   .form-actions.for-entry
     = f.button :submit, class: "btn btn-success"
-    = link_to link_to t('views.common.back'), reviews_path, class: "btn btn-primary"
