@@ -11,7 +11,8 @@ class ReviewsController < ApplicationController
       movie.reviews << review
       redirect_to movie_url(movie), notice: t('controllers.reviews.create.success_notice')
     else
-      redirect_to movie_url(movie), error: t('controllers.reviews.create.error_notice')
+      flash[:error] = t('controllers.reviews.create.error_notice')
+      redirect_to movie_url(movie)
     end
   end
 
@@ -30,8 +31,8 @@ class ReviewsController < ApplicationController
     user_reviews = 0
     movie.reviews.each { |review| user_reviews += 1 if review.user == current_user }
     if user_reviews > 0
-        flash[:error] = "One review is enough."
-        redirect_to movie_url(movie), error: "You cannot add second review."
+      flash[:error] = "One review is enough."
+      redirect_to movie_url(movie)
     end
   end
 end
