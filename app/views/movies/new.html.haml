@@ -1,4 +1,5 @@
 .form
-  %h1 #{t('views.movies.new.title')}
-
+  %h1
+    #{t('views.movies.new.title')}
+    = link_to 'Show', movie, class: "btn btn-info"
   = render 'form'

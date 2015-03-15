@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
 
   def create
     if movie.save
-      redirect_to movie, notice: 'Movie was successfully created.'
+      redirect_to movie, notice: t('controllers.movies.create.success_notice')
     else
       render :new
     end
@@ -15,7 +15,7 @@ class MoviesController < ApplicationController
 
   def update
     if movie.save
-      redirect_to movie, notice: 'Movie was successfully updated.'
+      redirect_to movie, notice: t('controllers.movies.update.success_notice')
     else
       render :edit
     end
@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
 
   def destroy
     movie.destroy
-    redirect_to users_admin_path, notice: 'Movie was successfully destroyed.'
+    redirect_to users_admin_path, notice: t('controllers.movies.destroy.success_notice')
   end
 
   def search
@@ -32,14 +32,14 @@ class MoviesController < ApplicationController
 
     movies.each_with_index do |movie, index|
       results.push({
-        id: movie.id,
-        count: movie.reviews.length,
-        movie: movie,
-        title: movie.title,
-        rating: movie.reviews.calculate( "average", "rating" ).round( 2 ),
-        reviews_count: movie.reviews.count,
-        uri: url_for( controller: "movies", action: "show", id: movie.id )
-      })
+                       id: movie.id,
+                       count: movie.reviews.length,
+                       movie: movie,
+                       title: movie.title,
+                       rating: movie.reviews.calculate( "average", "rating" ).round( 2 ),
+                       reviews_count: movie.reviews.count,
+                       uri: url_for( controller: "movies", action: "show", id: movie.id )
+                   })
     end
 
     render :json => results
@@ -62,7 +62,7 @@ class MoviesController < ApplicationController
 
   def check_admin
     return if current_user.admin?
-    flash[:error] = "You must be admin."
+    flash[:error] = t('controllers.movies.check_admin.error')
     redirect_to new_user_session_path
   end
 end

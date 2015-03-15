@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
   def create
     if review.save
-      redirect_to review, notice: 'Review was successfully created.'
+      redirect_to review, notice: t('controllers.reviews.create.success_notice')
     else
       render :new
     end
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
 
   def update
     if review.save
-      redirect_to review, notice: 'Review was successfully updated.'
+      redirect_to review, notice: t('controllers.reviews.update.success_notice')
     else
       render :edit
     end
@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review.destroy
-    redirect_to reviews_url, notice: 'Review was successfully destroyed.'
+    redirect_to reviews_url, notice: t('controllers.reviews.destroy.success_notice')
   end
 
   private

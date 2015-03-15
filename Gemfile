@@ -23,6 +23,7 @@ gem 'instagram'
 gem 'dotenv-rails'
 gem 'omniauth-instagram'
 gem 'pg_search'
+gem 'draper'
 
 group :development do
   gem 'better_errors'

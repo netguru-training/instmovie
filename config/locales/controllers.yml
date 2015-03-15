@@ -1,0 +1,18 @@
+en:
+  controllers:
+    movies:
+      create:
+        success_notice: Movie was successfully created.
+      update:
+        success_notice: Movie was successfully updated.
+      destroy:
+        success_notice: Movie was successfully destroyed.
+      check_admin:
+        error: You must be admin.
+    reviews:
+      create:
+        success_notice: Review was successfully created.
+      update:
+        success_notice: Review was successfully updated.
+      destroy:
+        success_notice: Review was successfully destroyed.
