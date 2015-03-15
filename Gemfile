@@ -26,6 +26,7 @@ gem 'draper'
 gem 'gravtastic'
 gem 'carrierwave'
 gem 'cloudinary'
+gem 'fog'
 
 group :development do
   gem 'better_errors'
