@@ -1,18 +1,15 @@
 language: ruby
 rvm:
 - 2.1.5
+before_script:
+- psql -c 'create database instamovie_test;' -U postgres
 deploy:
   provider: heroku
   api_key:
-    secure: <%= ENV['API_KEY_SECURE'] %>
-  run:
-  - rake db:migrate
+    secure: bR2dJZGGX54/S86i5JQOaSca2Mdql8Cyu2pQNzF7IfgYnRhEUmotpSYJ0fHYjRd/jgIyg4hyRP1Wy/Rwfw/vLSETBYO+m+maFU9Oj3hIoBDDWfliefi+azXPef5wm36gpdV/t5TmkccH0mtl+LBT+HZD8/CprY+o+xS7mSoJvF4=
   app: instmovie
   on:
     repo: netguru-training/instmovie
-before_script:
-- export RAILS_ENV=test
-- cp config/database.yml.travis config/database.yml
-- psql -c 'create database travis_ci_test;' -U postgres
-script:
-- bundle exec rspec spec
+app: instmovie
+true:
+  repo: netguru-training/instmovie
