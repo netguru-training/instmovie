@@ -11,7 +11,6 @@ module Instagram
     end
 
     private
-
     def update_nickname!
       @user.update(username: fetch_nickname)
     end
