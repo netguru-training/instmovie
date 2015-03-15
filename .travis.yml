@@ -2,6 +2,7 @@ language: ruby
 rvm:
 - 2.1.5
 before_script:
+- cp config/database.yml.sample config/database.yml
 - psql -c 'create database instamovie_test;' -U postgres
 deploy:
   provider: heroku
