@@ -16,16 +16,16 @@ User.where(email: 'jan@kowal.ski').first_or_create(password: 'jan_kowal')
 User.where(email: 'robert@bara.theon').first_or_create(password: 'ours_is_fury')
 User.where(email: 'jaime@lanni.ster').first_or_create(password: 'golden_hair')
 
-Movie.where(title: 'Godfather').first_or_create
-Movie.where(title: 'The Shawshank Redemption').first_or_create
-Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring').first_or_create
-Movie.where(title: 'The Dark Knight').first_or_create
-Movie.where(title: 'Fight club').first_or_create
-Movie.where(title: 'Inception').first_or_create
-Movie.where(title: 'Rambo').first_or_create
-Movie.where(title: 'The Silence of the Lambs').first_or_create
-Movie.where(title: 'Se7en').first_or_create
-Movie.where(title: 'Saving Private Ryan').first_or_create
+Movie.where(title: 'Godfather', instagram_tag: 'godfathermovie').first_or_create
+Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemption').first_or_create
+Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring', instagram_tag: 'lotr').first_or_create
+Movie.where(title: 'The Dark Knight', instagram_tag: 'darkknight').first_or_create
+Movie.where(title: 'Fight club', instagram_tag: 'fightclubmovie').first_or_create
+Movie.where(title: 'Inception', instagram_tag: 'inceptionmovie').first_or_create
+Movie.where(title: 'Rambo', instagram_tag: 'rambomovie').first_or_create
+Movie.where(title: 'The Silence of the Lambs', instagram_tag: 'silenceofthelambs').first_or_create
+Movie.where(title: 'Se7en', instagram_tag: 'se7enmovie').first_or_create
+Movie.where(title: 'Saving Private Ryan', instagram_tag: 'savingprivateryan').first_or_create
 
 Tag.where(name: 'Drama').first_or_create
 Tag.where(name: 'Comedy').first_or_create

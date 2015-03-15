@@ -1,8 +1,7 @@
 .row
   .col-md-6
-    %p
-      %h2
-        = movie.title
+    %h1= movie.title
+    %p.rate
 
       = imdb_style_rating_for movie, current_user
       %br/
@@ -20,10 +19,21 @@
       %p
 
     - else
-      - movie.reviews.each do |review|
-        .row
-          = review.content
-          = review.decorate.creation_time
+      %h2.page-header Reviews
+      %section.comment-list
+        - movie.reviews.each do |review|
+          %article.row
+
+            .col-md-10.col-sm-10
+              .panel.panel-default.arrow.left
+                .panel-body
+                  %header.text-left
+                    %time.comment-date{:datetime => "16-12-2014 01:05"}
+                      %i.fa.fa-clock-o
+                      =review.decorate.creation_time.split(' ')[2].to_s << ' ' + review.decorate.creation_time.split(' ')[3].to_s
+                  .comment-post
+                    %p
+                      =review.content
 
     - if current_user.admin?
       = link_to link_to t('views.common.edit'), edit_movie_path(movie)
