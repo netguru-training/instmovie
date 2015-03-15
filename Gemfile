@@ -16,7 +16,6 @@ gem 'pg'
 gem 'simple_form'
 gem 'decent_exposure'
 gem 'jquery-ui-rails'
-gem 'paperclip-dropbox', '>= 1.1.7'
 gem 'ratyrate', '1.2.2.alpha'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'instagram'
@@ -25,6 +24,8 @@ gem 'omniauth-instagram'
 gem 'pg_search'
 gem 'draper'
 gem 'gravtastic'
+gem 'carrierwave'
+gem 'cloudinary'
 
 group :development do
   gem 'better_errors'
