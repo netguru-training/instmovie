@@ -6,7 +6,6 @@ class Movie < ActiveRecord::Base
     :storage => :dropbox,
     :dropbox_credentials => Rails.root.join("config/dropbox.yml"),
     :dropbox_visibility => 'public'
-  #attr_accessor :picture_file_name
 
   validates_attachment :picture, content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }
 
