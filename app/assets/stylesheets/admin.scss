@@ -1,0 +1,17 @@
+.list-group-item.more {
+  text-align: center;
+  cursor: pointer;
+
+  &:after {
+    display: inline-block;
+    content: " ▼";
+  }
+
+  &.loading:after {
+    content: " is loading..."
+  }
+}
+
+.admin-add {
+  float: right;
+}

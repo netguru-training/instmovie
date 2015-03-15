@@ -1,12 +1,10 @@
-%p#notice= notice
-
 %p
-  %b Content:
+  %b #{t('views.reviews.show.content')}:
   = review.content
 %p
-  %b Rating:
+  %b #{t('views.reviews.show.rating')}:
   = review.rating
 
-= link_to 'Edit', edit_review_path(review)
+= link_to t('views.common.edit'), edit_review_path(review)
 \|
-= link_to 'Back', reviews_path
+= link_to t('views.common.back'), reviews_path

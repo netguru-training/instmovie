@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150314145633) do
-
+ActiveRecord::Schema.define(version: 20150315075645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +27,9 @@ ActiveRecord::Schema.define(version: 20150314145633) do
 
   create_table "movies", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "instagram_tag", default: "", null: false
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -39,6 +38,14 @@ ActiveRecord::Schema.define(version: 20150314145633) do
     t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "searchable_id"
+    t.string   "searchable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "rates", force: :cascade do |t|
@@ -76,7 +83,7 @@ ActiveRecord::Schema.define(version: 20150314145633) do
 
   add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id", using: :btree
 
-  create_table "tag_relationships", force: :cascade do |t|
+  create_table "taggings", force: :cascade do |t|
     t.integer "tag_id"
     t.integer "taggable_id"
     t.string  "taggable_type"

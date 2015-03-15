@@ -1,1 +1,10 @@
-Hello world
+- if not user_signed_in?
+  .jumbotron.force-login
+    %h1 Oops!
+
+    %p You have to be a registered user to continue.
+
+    %p
+      = link_to "Sign in", new_user_session_path, class: "btn btn-success"
+      = 'or'
+      = link_to "Sign up", new_user_registration_path, class: "btn btn-primary"

@@ -25,15 +25,34 @@ class MoviesController < ApplicationController
     redirect_to users_admin_path, notice: 'Movie was successfully destroyed.'
   end
 
-  private
-    def movie_params
-      params.require(:movie).permit(:title)
+  def search
+    movies = Movie.sounds_kinda_like(params[:q]).all
+    results = []
+
+    movies.each_with_index do |movie, index|
+      results.push({
+        id: movie.id,
+        count: movie.reviews.length,
+        movie: movie,
+        title: movie.title,
+        rating: movie.reviews.calculate( "average", "rating" ).round( 2 ),
+        reviews_count: movie.reviews.count,
+        uri: url_for( controller: "movies", action: "show", id: movie.id )
+      })
     end
 
-    def check_admin
-      unless current_user.admin?
-        flash[:error] = "You must be admin."
-        redirect_to new_user_session_path
-      end
-    end
+    render :json => results
+  end
+
+  private
+
+  def movie_params
+    params.require(:movie).permit(:title)
+  end
+
+  def check_admin
+    return if current_user.admin?
+    flash[:error] = "You must be admin."
+    redirect_to new_user_session_path
+  end
 end

@@ -3,11 +3,12 @@
 .row.admin
   %span.col-md-6
     %h3
+      =link_to 'Add review', new_review_path, class: "btn btn-sm btn-success admin-add"
       =link_to 'Reviews', reviews_path
 
     %ul.list-group
-      - reviews.each do |review|
-        %li.list-group-item
+      - reviews.each_with_index do |review, index|
+        %li.list-group-item{class: "#{index > 10 ? 'hidden' : ''}"}
           .btn-group
             = link_to 'Remove', review_path( review.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
             = link_to 'Edit', edit_review_path( review.id ), class: "btn btn-primary btn-xs"
@@ -18,14 +19,17 @@
             = ' reviewed: "' << review.content[0..30] << ('...' if review.content.length > 30).to_s << '" around '
             %small
               = time_ago_in_words( review.created_at )
+      - if reviews.length > 10
+        %li.list-group-item.more More
 
   %span.col-md-6
     %h3
+      =link_to 'Add movie', new_movie_path, class: "btn btn-sm btn-success admin-add"
       =link_to 'Movies', movies_path
 
     %ul.list-group
-      - movies.each do |movie|
-        %li.list-group-item
+      - movies.each_with_index do |movie, index|
+        %li.list-group-item{class: "#{index > 10 ? 'hidden' : ''}"}
           .btn-group
             = link_to 'Remove', movie_path( movie.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
             = link_to 'Edit', edit_movie_path( movie.id ), class: "btn btn-primary btn-xs"
@@ -35,3 +39,6 @@
             = link_to( movie.title, movie_path(movie.id) ) << ', '
             %small
               = 'added around ' << time_ago_in_words( movie.created_at )
+      - if movies.length > 10
+        %li.list-group-item.more More
+

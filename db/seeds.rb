@@ -1,17 +1,15 @@
-admin = User.first_or_create(email: "admin@netguru.co", password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true)
+godfather = Movie.where(title: 'Godfather', instagram_tag: 'godfathermovie').first_or_create
+shawshank = Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemptionmovie').first_or_create
+lotr = Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring', instagram_tag: 'lotrmovie').first_or_create
+dark_knight = Movie.where(title: 'The Dark Knight', instagram_tag: 'darkknightmovie').first_or_create
+fight_club = Movie.where(title: 'Fight club', instagram_tag: 'fightclubmovie').first_or_create
+inception = Movie.where(title: 'Inception', instagram_tag: 'inceptionmovie').first_or_create
+rambo = Movie.where(title: 'Rambo', instagram_tag: 'rambomovie').first_or_create
+silence = Movie.where(title: 'The Silence of the Lambs', instagram_tag: 'thesilenceofthelambs').first_or_create
+seven = Movie.where(title: 'Se7en', instagram_tag: 'sevenmovie').first_or_create
+ryan = Movie.where(title: 'Saving Private Ryan', instagram_tag: 'savingprivateryan').first_or_create
 
-godfather = Movie.first_or_create(title: 'Godfather')
-Movie.first_or_create(title: 'The Shawshank Redemption')
-Movie.first_or_create(title: 'The Lord of the Rings: The Fellowship of the Ring')
-Movie.first_or_create(title: 'The Dark Knight')
-Movie.first_or_create(title: 'Fight club')
-Movie.first_or_create(title: 'Inception')
-Movie.first_or_create(title: 'Rambo')
-Movie.first_or_create(title: 'The Silence of the Lambs')
-Movie.first_or_create(title: 'Se7en')
-Movie.first_or_create(title: 'Saving Private Ryan')
-
-User.where(email: "admin@netguru.co").first_or_create(password: "adminadmin", password_confirmation: "adminadmin", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", admin: true)
+User.where(email: "admin@netguru.co").first_or_create(password: "adminadmin", admin: true)
 User.where(email: 'john@doe.com').first_or_create(password: 'pass2word')
 User.where(email: 'foo@bar.com').first_or_create(password: 'foo4barcode')
 User.where(email: 'jan@kowal.ski').first_or_create(password: 'jan_kowal')
@@ -20,7 +18,7 @@ User.where(email: 'jaime@lanni.ster').first_or_create(password: 'golden_hair')
 
 Movie.where(title: 'Godfather').first_or_create
 Movie.where(title: 'The Shawshank Redemption').first_or_create
-Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring')
+Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring').first_or_create
 Movie.where(title: 'The Dark Knight').first_or_create
 Movie.where(title: 'Fight club').first_or_create
 Movie.where(title: 'Inception').first_or_create
@@ -46,6 +44,40 @@ Tag.where(name: 'War').first_or_create
 Tag.where(name: 'Musical').first_or_create
 Tag.where(name: 'Mystery').first_or_create
 
-Review.where(content: 'ok', rating: 2, movie_id: godfather.id).first_or_create
-Review.where(content: 'will do', rating: 3, movie_id: godfather.id).first_or_create
-Review.where(content: 'cool', rating: 4, movie_id: godfather.id).first_or_create
+Review.where(content: 'OK.', rating: 2, movie_id: godfather.id).first_or_create
+Review.where(content: 'Will do.', rating: 3, movie_id: godfather.id).first_or_create
+Review.where(content: 'Cool.', rating: 4, movie_id: godfather.id).first_or_create
+
+Review.where(content: 'Could be better.', rating: 2, movie_id: shawshank.id).first_or_create
+Review.where(content: 'Would recommend.', rating: 5, movie_id: shawshank.id).first_or_create
+Review.where(content: 'One can watch it.', rating: 3, movie_id: shawshank.id).first_or_create
+
+Review.where(content: 'Nice.', rating: 4, movie_id: lotr.id).first_or_create
+Review.where(content: 'Neat!', rating: 5, movie_id: lotr.id).first_or_create
+Review.where(content: 'I liked it.', rating: 5, movie_id: lotr.id).first_or_create
+Review.where(content: 'i loved it!', rating: 5, movie_id: lotr.id).first_or_create
+
+Review.where(content: 'Dunno...', rating: 3, movie_id: dark_knight.id).first_or_create
+Review.where(content: 'Not for me.', rating: 2, movie_id: dark_knight.id).first_or_create
+
+Review.where(content: 'I can\'t speak about it.', rating: 4, movie_id: fight_club.id).first_or_create
+Review.where(content: 'Liking it.', rating: 4, movie_id: fight_club.id).first_or_create
+Review.where(content: 'Can\'t wait for the sequel.', rating: 5, movie_id: fight_club.id).first_or_create
+
+Review.where(content: 'I can\'t go too deep in this review.', rating: 4, movie_id: inception.id).first_or_create
+Review.where(content: 'Mindblowing...', rating: 5, movie_id: inception.id).first_or_create
+Review.where(content: 'It\'s something!', rating: 5, movie_id: inception.id).first_or_create
+
+Review.where(content: 'Classic.', rating: 4, movie_id: rambo.id).first_or_create
+Review.where(content: 'Rambo 2 is better.', rating: 3, movie_id: rambo.id).first_or_create
+
+Review.where(content: 'Scary enough.', rating: 4, movie_id: silence.id).first_or_create
+Review.where(content: 'Is this based on a true story?', rating: 3, movie_id: silence.id).first_or_create
+Review.where(content: 'I have to watch it again sometimes.', rating: 4, movie_id: silence.id).first_or_create
+
+Review.where(content: 'Was is meant funny?', rating: 2, movie_id: seven.id).first_or_create
+Review.where(content: 'So deep!', rating: 5, movie_id: seven.id).first_or_create
+Review.where(content: 'A well crafted artwork.', rating: 5, movie_id: seven.id).first_or_create
+
+Review.where(content: 'Not very accurate.', rating: 2, movie_id: ryan.id).first_or_create
+Review.where(content: 'Tom Hanks rocks!', rating: 5, movie_id: ryan.id).first_or_create

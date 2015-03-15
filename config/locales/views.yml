@@ -1,5 +1,11 @@
 en:
   views:
+    common:
+      show: Show
+      back: Back
+      edit: Edit
+      destroy: Destroy
+      confirm_destroy: Are you sure?
     movies:
       show:
         title: Title
@@ -11,5 +17,24 @@ en:
       index:
         title: Listing movies
         movie_title: Title
+        new_movie: New movie
       new:
         title: New movie
+    reviews:
+      edit:
+        title: Editing review
+      index:
+        title: Listing reviews
+        content: Content
+        rating: Rating
+        new_review: New review
+      new:
+        title: New review
+      show:
+        content: Content
+        rating: Rating
+    users:
+      admin:
+
+      profile:
+

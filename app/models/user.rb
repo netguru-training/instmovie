@@ -1,12 +1,10 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :omniauthable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauth_providers => [:instagram]
+         :recoverable, :rememberable, :trackable, :validatable, omniauth_providers: [:instagram]
 
-  has_many :tag_relationships, :through => :tags, class_name: 'TagRelationships'
-  has_many :tags
-  
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
+
   ratyrate_rater
 
   def self.from_omniauth(auth)
@@ -15,6 +13,4 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
-
-
 end

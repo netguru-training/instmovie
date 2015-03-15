@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   get 'users/profile'
   get 'users/admin'
+
+  get 'search/movies' => 'movies#search'
 end
