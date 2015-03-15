@@ -1,13 +1,14 @@
 class Registrations::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def instagram
-    if current_user!= nil
-      current_user.update(access_token: env['omniauth.auth']['credentials']['token'])
+
+    if current_user
+      Instagram::UpdateTokenService.new(user, env['omniauth.auth']).call
       redirect_to root_path
     else
-      @user = User.from_omniauth(request.env["omniauth.auth"])
-      @user.update(access_token: env['omniauth.auth']['credentials']['token'])
-      sign_in_and_redirect @user
+      user = User.from_omniauth(request.env['omniauth.auth'])
+      Instagram::UpdateProfileInfoService.new(user, env['omniauth.auth']).call
+      Instagram::UpdateTokenService.new(user, env['omniauth.auth']).call
+      sign_in_and_redirect user
     end
-    #current_user.update(access_token: env['omniauth.auth']['credentials']['token'])
   end
 end
