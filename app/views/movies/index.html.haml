@@ -1,26 +1,29 @@
 %h1 #{t('views.movies.index.title')}
 
-%table
+%table{style: 'width:100%;', class: 'table-hover'}
   %thead
     %tr
-      %th #{t('views.movies.index.movie_title')}
+      %th
       %th
       %th
       %th
 
   %tbody
-    %ul.list-group.movies
     - movies.each do |movie|
-      %li.list-group-item
-        = image_tag movie.picture.url
-        = movie.title << ', '
-        %small
-          = 'added ' << time_ago_in_words( movie.created_at )
+      %tr{style:'height:50px;'}
+        %td= image_tag movie.picture.url
+        %td
+          = link_to movie.title + ', ', movie, style: 'text-decoration:none;'
 
-          %button.btn.btn-primary= link_to t('views.common.show'), movie
-          %button.btn.btn-= link_to t('views.common.edit'), edit_movie_path(movie)
-          %button= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.common.confirm_destroy') }
+
+          %small
+            = 'added ' << time_ago_in_words( movie.created_at )
+        - if current_user.admin?
+          %td
+            %button.btn.btn-primary= link_to t('views.common.edit'), edit_movie_path(movie), style: 'text-decoration:none;'
+          %td
+            %button.btn.btn-danger= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.common.confirm_destroy') }, style: 'text-decoration:none;'
 
 %br
 - if current_user.admin?
-  = link_to t('views.movies.index.new_movie'), new_movie_path
+  %button.btn.btn-primary= link_to t('views.movies.index.new_movie'), new_movie_path
