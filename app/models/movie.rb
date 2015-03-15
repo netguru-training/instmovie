@@ -2,7 +2,6 @@ class Movie < ActiveRecord::Base
   has_many :reviews
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
-  mount_uploader :image
 
   validates :title , presence: true
 
