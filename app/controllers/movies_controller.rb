@@ -57,7 +57,7 @@ class MoviesController < ApplicationController
   private
 
   def movie_params
-    params.require(:movie).permit(:title, :instagram_tag)
+    params.require(:movie).permit(:title, :instagram_tag, :picture)
   end
 
   def check_admin
