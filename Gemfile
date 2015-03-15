@@ -25,7 +25,7 @@ gem 'pg_search'
 gem 'draper'
 gem 'gravtastic'
 gem 'carrierwave'
-gem 'cloudinary'
+# gem 'cloudinary'
 gem 'fog'
 
 group :development do

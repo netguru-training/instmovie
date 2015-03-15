@@ -10,8 +10,6 @@ $ ->
       @.$canvas = $ "#map-canvas"
       @.is_single = $( ".map-wrapper" ).hasClass "movie"
 
-      console.log( "is_single" ,@.is_single )
-
       # Don't do anything is there is no map canvas
       return if @.$canvas.length is 0
 
@@ -71,8 +69,6 @@ $ ->
 
     loadMarkersContinue: ->
       self = @
-
-      console.log "loadMarkersContinue id", @.id
 
       # Request tags for an id
       xhr = $.ajax
