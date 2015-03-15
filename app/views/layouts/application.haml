@@ -23,7 +23,8 @@
               = link_to 'Movies', movies_path
             %li
               = link_to 'Global map', map_show_path
-
+            %li
+              = link_to 'Suggested movies', suggested_films_path
         .collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
             - if not user_signed_in?
