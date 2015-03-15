@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :check_user_reviews, only: [:create]
   expose(:reviews)
   expose(:review, attributes: :review_params)
-  expose(:movie)
+  expose(:movie) 
 
 
   def create
@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     review.destroy
-    redirect_to movie_url(movie), notice: t('controllers.reviews.destroy.success_notice')
+    redirect_to movie_url(movie.id), notice: t('controllers.reviews.destroy.success_notice')
   end
 
   private
