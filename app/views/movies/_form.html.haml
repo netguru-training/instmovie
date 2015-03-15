@@ -10,7 +10,3 @@
   .form-actions.for-entry
     = f.button :submit, class: "btn btn-success"
     = link_to link_to t('views.common.back'), movies_path, class: "btn btn-primary"
-
-  .form-inputs
-    = f.file_field :image
-    = f.hidden_field(:image_cache)

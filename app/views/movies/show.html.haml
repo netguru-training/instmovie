@@ -1,8 +1,9 @@
 .row
   .col-md-6
     %p
-      %b #{t('views.movies.show.title')}:
-      = movie.title
+      %h2
+        = movie.title
+
       = imdb_style_rating_for movie, current_user
       %br/
       #{t('views.movies.show.visual_effects')}: #{rating_for movie, "visual_effects"}
