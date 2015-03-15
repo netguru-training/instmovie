@@ -5,20 +5,25 @@
 $ ->
   class TagMap
     constructor: ->
+      self = @
+
       @.$canvas = $ "#map-canvas"
 
       # Don't do anything is there is no map canvas
       return if @.$canvas.length is 0
 
       google.maps.event.addDomListener window, 'load', @.init
-      @.loadMarkers()
+      @.setHandlers()
+      setTimeout ->
+        self.loadMarkers()
+      , 1000
 
     init: ->
       mapOptions =
         zoom: 2,
         center: new google.maps.LatLng( 0, 0 )
 
-      @.map_obj = new google.maps.Map document.getElementById( "map-canvas" ), mapOptions
+      window.map_obj = new google.maps.Map document.getElementById( "map-canvas" ), mapOptions
 
     loadMarkers: ->
       @.id = 1
@@ -27,6 +32,37 @@ $ ->
 
     hideCrunching: ->
       $( ".crunching" ).hide()
+
+    imgCreate: ( img_url ) ->
+      $img = $( "<img>" ).attr "src", img_url
+        .addClass "img-hover"
+        .prependTo "body"
+
+    imgFollowMouse: ( event ) ->
+      $ "img.img-hover"
+        .css
+          left: event.pageX - $( window ).scrollLeft() - 170
+          top: event.pageY - $( window ).scrollTop() - 20
+
+    imgDestroy: ( img_url ) ->
+      $ "img.img-hover"
+        .remove()
+
+    setHandlers: ->
+      self = @
+
+      $( document ).on "mouseenter mousemove mouseleave", ".map-label a", ( event ) ->
+        img_url = $( this ).attr "img-url"
+
+        if event.type is "mouseenter"
+          self.imgCreate img_url
+          self.imgFollowMouse event
+
+        if event.type is "mousemove"
+          self.imgFollowMouse event
+
+        if event.type is "mouseleave"
+          self.imgDestroy()
 
     loadMarkersContinue: ->
       self = @
@@ -43,7 +79,8 @@ $ ->
             position: lat_lng,
             map: map_obj,
             title: marker.name,
-            labelContent: "<a href=\"" + marker.uri + "\">" + marker.name + "</a>",
+            labelContent: "<a href=\"" + marker.uri + "\" img-url=\"" + marker.photo +
+              "\">" + marker.name + "</a>",
             labelAnchor: new google.maps.Point(22, 0),
             labelClass: "btn btn-info btn-xs map-label"
 
@@ -51,7 +88,6 @@ $ ->
           self.id++
           setTimeout ->
             self.loadMarkersContinue()
-          , 300
         else
           self.hideCrunching()
 

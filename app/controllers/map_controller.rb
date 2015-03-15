@@ -31,7 +31,8 @@ class MapController < ApplicationController
           latitude: item[ "location" ][ "latitude" ],
           longitude: item[ "location" ][ "longitude" ],
           name: movie.title,
-          uri: url_for( movie_path(movie.id ) )
+          uri: url_for( movie_path( movie ) ),
+          photo: item["images"]["thumbnail"]["url"]
         })
       end
     end

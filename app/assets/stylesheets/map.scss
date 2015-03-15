@@ -35,3 +35,12 @@
     margin-left: -115px;
   }
 }
+
+.img-hover {
+  width: 150px;
+  height: 150px;
+  position: fixed;
+  z-index: 30;
+  border: 2px solid #888;
+  background: white url(/assets/loader.gif) no-repeat center;
+}
