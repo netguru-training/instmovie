@@ -1,0 +1,28 @@
+.auctions-wrapper {
+  .auction {
+    float: left;
+    width: 132px;
+    padding: 2px;
+
+    .auction-cover-wrapper {
+      width: 128px;
+      height: 96px;
+
+      img {
+        width: inherit;
+        height: inherit;
+      }
+
+      .auction-name {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        word-break: break-word;
+      }
+    }
+  }
+
+  .no-auctions {
+    color: white;
+  }
+}

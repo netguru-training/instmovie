@@ -74,7 +74,7 @@ $ ->
       xhr = $.ajax
         url: "/map/markers/" + @.id
 
-      xhr.success ( response )->
+      xhr.success ( response ) ->
         $.each response.markers, ( index, marker ) ->
           lat_lng = new google.maps.LatLng( marker.latitude, marker.longitude )
 

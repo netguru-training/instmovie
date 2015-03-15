@@ -10,18 +10,17 @@
 
   %tbody
     - movies.each do |movie|
-      %tr{style:'height:50px;'}
+      %tr.movie-item
         %td
-          = link_to movie.title + ', ', movie, style: 'text-decoration:none;'
+          .movies-buttons
+            - if current_user.admin?
+              %button.btn.btn-primary.btn-sm= link_to t('views.common.edit'), edit_movie_path(movie)
+              %button.btn.btn-danger.btn-sm= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.common.confirm_destroy') }
+              %button.btn.btn-info.btn-sm= link_to 'View', edit_movie_path( movie )
 
-
+          = link_to movie.title + ', ', movie
           %small
             = 'added ' << time_ago_in_words( movie.created_at )
-        - if current_user.admin?
-          %td
-            %button.btn.btn-primary= link_to t('views.common.edit'), edit_movie_path(movie), style: 'text-decoration:none;'
-          %td
-            %button.btn.btn-danger= link_to t('views.common.destroy'), movie, method: :delete, data: { confirm: t('views.common.confirm_destroy') }, style: 'text-decoration:none;'
 
 %br
 - if current_user.admin?

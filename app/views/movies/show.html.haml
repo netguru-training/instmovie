@@ -30,7 +30,11 @@
     = link_to link_to t('views.common.back'), movies_path
 
   .col-md-6
+    %h2 Map
     .map-wrapper.movie{:movie => movie.id}
       #map-canvas
 
     .no-photos.hidden Sorry, no photos found for this movie!
+
+    %h2 Auctions
+    .auctions-wrapper{:movie => movie.id}

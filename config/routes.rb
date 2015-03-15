@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   get 'search/movies' => 'movies#search'
 
   get 'map/markers/:id' => 'map#markers'
+  get 'movies/auctions/:id' => 'movies#auctions'
 end

@@ -1,0 +1,8 @@
+- @auctions_list.each do |auction|
+  .auction
+    %a.auction-cover-wrapper{href: auction[:uri]}
+      %img.auction-cover{src: auction[:img]}
+      .auction-name= auction[:name]
+
+- if @auctions_list.length == 0
+  %div.no-auctions Sorry, no auctions found for this movie!

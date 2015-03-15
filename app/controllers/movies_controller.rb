@@ -48,7 +48,76 @@ class MoviesController < ApplicationController
     render :json => results
   end
 
+  def auctions
+    require 'open-uri'
+
+    id = params[:id]
+
+    # Current movie
+    movie = Movie.where(id: params[:id]).first
+
+    search = movie.title.gsub(/\s/, '+').gsub(/[[:punct:]]/, '')
+
+    # URL template
+    uri = 'http://allegro.pl/rss.php?feed=search&?category=20585&limit=180&order=m&' +
+      'search_scope=category-20585&string=' + search
+
+    # RSS channel content
+    content_xml = open( uri ).read
+
+    # Parsed XML
+    content = Hash.from_xml( content_xml )
+
+    @auctions_list = get_auctions content
+
+    render :partial => '/movies/auctions'
+  end
+
   protected
+
+  def get_auctions( content )
+    # require 'rubygems'
+    require 'hpricot'
+
+    # Auctions
+    auctions_list = []
+
+    count = 0
+
+    content["rss"]["channel"]["item"].each do |item|
+      auction = Hash.new
+
+      # binding.pry
+
+      next if item.class == Array
+
+      doc = Hpricot( item[ "description" ] )
+      imgs = doc.search( "img" )
+
+      has_img = false
+
+      imgs.each do |img|
+        has_img = true
+        auction[:img] = img.attributes[ "src" ]
+        break
+      end
+
+      # Skip auctions with no images
+      next if not has_img
+
+      count += 1
+
+      auction[:name] = item[ "title" ].to_s
+      auction[:uri] = item[ "link" ].to_s
+
+
+      auctions_list.push auction
+
+      break if count == 10
+    end
+
+    auctions_list
+  end
 
   def auto_generate_tag
     # Auto-generate tags

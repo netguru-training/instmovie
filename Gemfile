@@ -27,6 +27,7 @@ gem 'gravtastic'
 gem 'carrierwave'
 # gem 'cloudinary'
 gem 'fog'
+gem 'hpricot'
 
 group :development do
   gem 'better_errors'
