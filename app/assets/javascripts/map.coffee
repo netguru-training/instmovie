@@ -8,25 +8,30 @@ $ ->
       self = @
 
       @.$canvas = $ "#map-canvas"
+      @.is_single = $( ".map-wrapper" ).hasClass "movie"
+
+      console.log( "is_single" ,@.is_single )
 
       # Don't do anything is there is no map canvas
       return if @.$canvas.length is 0
 
-      google.maps.event.addDomListener window, 'load', @.init
+      zoom = if @.is_single then 1 else 2
+
+      google.maps.event.addDomListener window, 'load', @.init( zoom )
       @.setHandlers()
       setTimeout ->
         self.loadMarkers()
       , 1000
 
-    init: ->
+    init: ( zoom ) ->
       mapOptions =
-        zoom: 2,
-        center: new google.maps.LatLng( 0, 0 )
+        zoom: zoom,
+        center: new google.maps.LatLng( 20, 0 )
 
       window.map_obj = new google.maps.Map document.getElementById( "map-canvas" ), mapOptions
 
     loadMarkers: ->
-      @.id = 1
+      @.id = if @.is_single then parseInt( $( ".map-wrapper.movie" ).attr( "movie" ), 10 ) else 1
 
       @.loadMarkersContinue()
 
@@ -67,6 +72,8 @@ $ ->
     loadMarkersContinue: ->
       self = @
 
+      console.log "loadMarkersContinue id", @.id
+
       # Request tags for an id
       xhr = $.ajax
         url: "/map/markers/" + @.id
@@ -84,7 +91,12 @@ $ ->
             labelAnchor: new google.maps.Point(22, 0),
             labelClass: "btn btn-info btn-xs map-label"
 
+        if response.markers.length is 0
+          $( ".no-photos" ).removeClass "hidden"
+
         if not response.finished
+          return if self.is_single
+
           self.id++
           setTimeout ->
             self.loadMarkersContinue()

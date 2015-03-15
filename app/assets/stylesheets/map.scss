@@ -13,6 +13,14 @@
       height: 500px;
     }
   }
+
+  &.movie,
+  &.movie #map-canvas {
+    min-width: 500px;
+    max-width: 800px;
+    width: 100%;
+    height: 300px;
+  }
 }
 
 .map-label {
@@ -43,4 +51,11 @@
   z-index: 30;
   border: 2px solid #888;
   background: white url(/assets/loader.gif) no-repeat center;
+}
+
+.no-photos {
+  color: black;
+  text-align: center;
+  position: relative;
+  bottom: 170px;
 }

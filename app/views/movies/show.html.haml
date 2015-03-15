@@ -1,29 +1,36 @@
-%p
-  %b #{t('views.movies.show.title')}:
-  = movie.title
-  = imdb_style_rating_for movie, current_user
-  %br/
-  #{t('views.movies.show.visual_effects')}: #{rating_for movie, "visual_effects"}
-  %br/
-  #{t('views.movies.show.scenario')}: #{rating_for movie, "scenario"}
-  %br/
-  #{t('views.movies.show.actors')}: #{rating_for movie, "actors"}
-  %br/
+.row
+  .col-md-6
+    %p
+      %b #{t('views.movies.show.title')}:
+      = movie.title
+      = imdb_style_rating_for movie, current_user
+      %br/
+      #{t('views.movies.show.visual_effects')}: #{rating_for movie, "visual_effects"}
+      %br/
+      #{t('views.movies.show.scenario')}: #{rating_for movie, "scenario"}
+      %br/
+      #{t('views.movies.show.actors')}: #{rating_for movie, "actors"}
+      %br/
 
-%p
-  %h3 #{t('views.movies.show.new_review')}
-  = render 'reviews/form'
-- if reviews.empty?
-  %p
+    %p
+      %h3 #{t('views.movies.show.new_review')}
+      = render 'reviews/form'
+    - if reviews.empty?
+      %p
 
-- else
-  - movie.reviews.each do |review|
-    .row
-      = review.content
-      = review.decorate.creation_time
+    - else
+      - movie.reviews.each do |review|
+        .row
+          = review.content
+          = review.decorate.creation_time
 
-- if current_user.admin?
-  = link_to link_to t('views.common.edit'), edit_movie_path(movie)
-  \|
-= link_to link_to t('views.common.back'), movies_path
+    - if current_user.admin?
+      = link_to link_to t('views.common.edit'), edit_movie_path(movie)
+      \|
+    = link_to link_to t('views.common.back'), movies_path
 
+  .col-md-6
+    .map-wrapper.movie{:movie => movie.id}
+      #map-canvas
+
+    .no-photos.hidden Sorry, no photos found for this movie!
