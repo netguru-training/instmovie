@@ -16,6 +16,9 @@
       .container-fluid
         .navbar-header
           = link_to 'Instmovie', root_path, class: "navbar-brand"
+          %ul.nav.navbar-nav
+            %li 
+              = link_to 'Movies', movies_path
 
         .collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right
