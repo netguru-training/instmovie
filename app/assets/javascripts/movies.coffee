@@ -11,12 +11,10 @@ $ ->
           page: params.page
         }
       processResults: (data, page) ->
-        { results: data }
-      results: (data) ->
         results = []
         $.each data, (index, item) ->
           results.push
             id: item.id
             text: item.name
-          return
+        return { results: results }
     cache: true
