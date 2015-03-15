@@ -36,12 +36,8 @@
               - if current_user.access_token.nil?
                 %li
                   = link_to 'Connect to Instagram', user_omniauth_authorize_path(:instagram)
-              - if current_user.decorate.has_avatar
-                %li
-                  %img.img-thumbnail{src: current_user.avatar, class: 'navbar-avatar'}
-              - else
-                %li
-                  =image_tag current_user.gravatar_url,class:'img-thumbnail navbar-avatar'
+              %li
+                %img.img-thumbnail{src: current_user.default_avatar, class: 'navbar-avatar'}
               %li
                 = link_to 'Sign out', destroy_user_session_path, method: :delete
 

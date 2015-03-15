@@ -5,8 +5,18 @@ class UserDecorator < Draper::Decorator
     (username.present?) ? username.capitalize : email
   end
 
-  def has_avatar
-    model.avatar and model.avatar != 'https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg'
+  def default_avatar
+    if model.avatar.present? and model.avatar != default_instagram_avatar_url
+      model.avatar
+    else
+      model.gravatar_url
+    end
+  end
+
+  private
+
+  def default_instagram_avatar_url
+    'https://instagramimages-a.akamaihd.net/profiles/anonymousUser.jpg'
   end
 end
 
