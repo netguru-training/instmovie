@@ -1,5 +1,5 @@
 godfather = Movie.where(title: 'Godfather', instagram_tag: 'godfathermovie').first_or_create
-shawshank = Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemptionmovie').first_or_create
+shawshank = Movie.where(title: 'The Shawshank Redemption', instagram_tag: 'shawshankredemption').first_or_create
 lotr = Movie.where(title: 'The Lord of the Rings: The Fellowship of the Ring', instagram_tag: 'lotrmovie').first_or_create
 dark_knight = Movie.where(title: 'The Dark Knight', instagram_tag: 'darkknightmovie').first_or_create
 fight_club = Movie.where(title: 'Fight club', instagram_tag: 'fightclubmovie').first_or_create

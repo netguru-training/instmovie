@@ -10,15 +10,19 @@
     %link{ href: 'https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/css/select2.min.css', rel: 'stylesheet'}/
     %link{ href: 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css', rel: 'stylesheet'}/
     %script(src='https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.1/js/select2.min.js')
+    %script(src='https://maps.googleapis.com/maps/api/js?v=3.exp')
+    %script(src='http://google-maps-utility-library-v3.googlecode.com/svn/tags/markerwithlabel/1.0.1/src/markerwithlabel.js')
 
   %body
     .navbar.navbar-default.navbar-fixed-top
       .container-fluid
         .navbar-header
           = link_to 'Instmovie', root_path, class: "navbar-brand"
-          %ul.nav.navbar-nav
-            %li 
+          %ul.nav.navbar-nav.navbar-left
+            %li
               = link_to 'Movies', movies_path
+            %li
+              = link_to 'Global map', map_show_path
 
         .collapse.navbar-collapse
           %ul.nav.navbar-nav.navbar-right

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'map/show'
+
   post '/rate' => 'rater#create', :as => 'rate'
 
   devise_for :users, controllers: {
@@ -15,4 +17,6 @@ Rails.application.routes.draw do
   get 'users/admin'
 
   get 'search/movies' => 'movies#search'
+
+  get 'map/markers/:id' => 'map#markers'
 end

@@ -1,0 +1,37 @@
+// Place all the styles related to the Map controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.map-wrapper {
+  &.single {
+    width: 800px;
+    height: 500px;
+    margin: 20px auto;
+
+    #map-canvas {
+      width: 800px;
+      height: 500px;
+    }
+  }
+}
+
+.map-label {
+   color: white;
+   white-space: nowrap;
+
+   a:link {
+     color: white;
+   }
+ }
+
+.map {
+  position: relative;
+
+  .crunching {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    font-size: 14px;
+    margin-left: -115px;
+  }
+}
