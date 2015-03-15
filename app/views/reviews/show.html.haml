@@ -4,6 +4,9 @@
 %p
   %b Rating:
   = review.rating
+%p
+  %b Movie:
+  = link_to review.movie.title, movie_path(review.movie.id)
 
 = link_to 'Edit', edit_review_path(review)
 \|

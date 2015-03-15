@@ -4,5 +4,9 @@
   .form-inputs
     = f.input :title
 
-  .form-actions
-    = f.button :submit
+  .form-inputs
+    = f.input :instagram_tag, hint: 'Leave empty to generate automatically'
+
+  .form-actions.for-entry
+    = f.button :submit, class: "btn btn-success"
+    = link_to 'Back', movies_path, class: "btn btn-primary"

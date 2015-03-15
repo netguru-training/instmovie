@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   expose(:reviews)
   expose(:review, attributes: :review_params)
+  expose(:movies)
 
   def create
     if review.save
@@ -26,6 +27,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :rating, :movie_id)
   end
 end
