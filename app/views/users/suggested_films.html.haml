@@ -1,0 +1,19 @@
+%h1 Movies suggested for you
+%p
+  %b Best visual effects:
+  -if @best_visual_effects.present?
+    = link_to @best_visual_effects.title, movie_path(@best_visual_effects.id)
+  -else
+    No suggestions
+%p
+  %b Best scenario:
+  -if @best_scenario.present?
+    = link_to @best_scenario.title, movie_path(@best_visual_effects.id)
+  -else
+    No suggestions
+%p
+  %b Best actors:
+  -if @best_actors.present?
+    = link_to @best_actors.title, movie_path(@best_visual_effects.id)
+  -else
+    No suggestions
