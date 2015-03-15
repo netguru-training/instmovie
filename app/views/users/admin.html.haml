@@ -3,16 +3,16 @@
 .row.admin
   %span.col-md-6
     %h3
-      =link_to 'Add review', new_review_path, class: "btn btn-sm btn-success admin-add"
-      =link_to 'Reviews', reviews_path
+      -# =link_to 'Add review', movie_new_review_path, class: "btn btn-sm btn-success admin-add"
+      -# =link_to 'Reviews', reviews_path
 
     %ul.list-group
       - reviews.each_with_index do |review, index|
         %li.list-group-item{class: "#{index > 10 ? 'hidden' : ''}"}
           .btn-group
-            = link_to 'Remove', review_path( review.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
-            = link_to 'Edit', edit_review_path( review.id ), class: "btn btn-primary btn-xs"
-            = link_to 'View', review_path( review.id ), class: "btn btn-info btn-xs"
+            = link_to 'Remove', review_path( review.id, reviem.movie.id ), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs"
+            = link_to 'Edit', edit_review_path( review.id, reviem.movie.id ), class: "btn btn-primary btn-xs"
+            = link_to 'View', review_path( review.id, reviem.movie.id ), class: "btn btn-info btn-xs"
 
           .list-group-item-wrapper
             = link_to review.movie.title, movie_path(review.movie.id)
