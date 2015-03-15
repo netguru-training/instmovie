@@ -18,6 +18,22 @@ class UsersController < ApplicationController
 
   end
 
+
   def profile
+
+  end
+  
+  def suggested_films
+    if current_user.present?
+      @best_visual_effects = get_for_category('visual_effects')
+      @best_scenario = get_for_category('scenario')
+      @best_actors = get_for_category('actors')
+    end
+  end
+
+  private
+
+  def get_for_category(category)
+    Suggestions::SuggestFilms.new(current_user).suggested_films(category)
   end
 end
