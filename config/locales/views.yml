@@ -12,6 +12,8 @@ en:
         scenario: Scenario
         visual_effects: Visual effects
         actors: Actors
+        reviews: Reviews
+        new_review: New review
       edit:
         title: Editing movie
       index:

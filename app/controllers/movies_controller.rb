@@ -4,6 +4,9 @@ class MoviesController < ApplicationController
   before_action :auto_generate_tag, only: [:create, :update]
   expose(:movies)
   expose(:movie, attributes: :movie_params)
+  expose(:review) { movie.reviews.build }
+  expose(:reviews) { movie.reviews }
+
 
   def create
     if movie.save

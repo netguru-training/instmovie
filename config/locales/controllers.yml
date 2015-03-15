@@ -12,6 +12,7 @@ en:
     reviews:
       create:
         success_notice: Review was successfully created.
+        error_notice: Review was not created.
       update:
         success_notice: Review was successfully updated.
       destroy:

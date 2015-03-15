@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
-  resources :reviews
 
   devise_for :users, controllers: {
      omniauth_callbacks: 'registrations/omniauth_callbacks'
  }
 
-  resources :movies
+  resources :movies do
+    resources :reviews
+  end
 
   root 'application#index'
 

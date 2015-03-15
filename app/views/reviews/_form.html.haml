@@ -1,10 +1,9 @@
-= simple_form_for(review) do |f|
+= simple_form_for([movie, review]) do |f|
   = f.error_notification
 
   .form-inputs
-    = f.input :content
-    = f.input :movie_id, :collection => movies, :include_blank => false
-    = f.input :rating
+   = f.text_area :content
+
 
   .form-actions.for-entry
     = f.button :submit, class: "btn btn-success"
