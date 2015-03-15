@@ -16,6 +16,17 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def update
+    if review.valid?
+      review.save
+      redirect_to movie_url(movie), notice: t('controllers.reviews.create.success_notice')
+    else
+      flash[:error] = t('controllers.reviews.create.error_notice')
+      redirect_to movie_url(movie)
+    end
+  end
+
+
   def destroy
     review.destroy
     redirect_to movie_url(movie.id), notice: t('controllers.reviews.destroy.success_notice')

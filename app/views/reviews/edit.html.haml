@@ -1,6 +1,6 @@
 .form
   %h1
     Editing review
-    = link_to 'Show', review, class: "btn btn-info"
+    = link_to 'Show', movie_review_path(movie.id, review.id), class: "btn btn-info"
 
   = render 'form'
