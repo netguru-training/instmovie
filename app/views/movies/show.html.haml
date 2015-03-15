@@ -23,17 +23,26 @@
       %section.comment-list
         - movie.reviews.each do |review|
           %article.row
-
-            .col-md-10.col-sm-10
-              .panel.panel-default.arrow.left
-                .panel-body
-                  %header.text-left
-                    %time.comment-date{:datetime => "16-12-2014 01:05"}
-                      %i.fa.fa-clock-o
+          .col-md-2.col-sm-2.hidden-xs
+            %figure.thumbnail
+              %img.img-responsive{:src => "http://www.keita-gaming.com/assets/profile/default-avatar-c5d8ec086224cb6fc4e395f4ba3018c2.jpg"}/
+              %figcaption.text-center
+                - if review.user_id.present? and review.user.email.present?
+                  =review.user.email
+                -elsif review.user_id.present? and review.user.username.present?
+                  =review.user.username
+                -else
+                  ='anonymous'
+          .col-md-10.col-sm-10
+            .panel.panel-default.arrow.left
+              .panel-body
+                %header.text-left
+                  %time.comment-date{:datetime => "16-12-2014 01:05"}
+                    %i.fa.fa-clock-o
                       =review.decorate.creation_time.split(' ')[2].to_s << ' ' + review.decorate.creation_time.split(' ')[3].to_s
-                  .comment-post
-                    %p
-                      =review.content
+                .comment-post
+                  %p
+                    =review.content
 
     - if current_user.admin?
       = link_to link_to t('views.common.edit'), edit_movie_path(movie)
