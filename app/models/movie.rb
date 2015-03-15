@@ -17,4 +17,11 @@ class Movie < ActiveRecord::Base
     },
     :ranked_by => ":tsearch"
   multisearchable :against => [:title]
+
+
+  def average_rating(category)
+    rates = Rate.where(rateable_id: self.id, dimension: category).pluck(:stars)
+    rates.inject{ |sum, el| sum + el }.to_f / rates.size
+  end
+
 end
