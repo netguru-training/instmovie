@@ -1,7 +1,6 @@
-%h1 #{t('views.movies.edit.title')}
+.form
+  %h1
+    #{t('views.movies.edit.title')}
+    = link_to 'Show', movie, class: "btn btn-info"
 
-= render 'form'
-
-= link_to t('views.common.show'), movie
-\|
-= link_to t('views.common.back'), movies_path
+  = render 'form'

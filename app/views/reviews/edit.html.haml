@@ -1,7 +1,6 @@
-%h1 #{t('views.reviews.edit.title')}
+.form
+  %h1
+    Editing review
+    = link_to 'Show', review, class: "btn btn-info"
 
-= render 'form'
-
-= link_to link_to t('views.common.show'), review
-\|
-= link_to link_to t('views.common.back'), reviews_path
+  = render 'form'

@@ -1,2 +1,4 @@
 en:
   decorators:
+    reviews:
+      created_at: Created at

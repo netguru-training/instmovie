@@ -1,8 +1,12 @@
 class MoviesController < ApplicationController
   before_action :authenticate_user!
   before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
+  before_action :auto_generate_tag, only: [:create, :update]
   expose(:movies)
   expose(:movie, attributes: :movie_params)
+  expose(:review) { movie.reviews.build }
+  expose(:reviews) { movie.reviews }
+
 
   def create
     if movie.save
@@ -44,10 +48,19 @@ class MoviesController < ApplicationController
     render :json => results
   end
 
+  protected
+
+  def auto_generate_tag
+    # Auto-generate tags
+    if movie.instagram_tag.length == 0
+      movie.instagram_tag = movie.title.gsub(/\s/, '').gsub(/[[:punct:]]/, '').downcase! << "movie"
+    end
+  end
+
   private
 
   def movie_params
-    params.require(:movie).permit(:title)
+    params.require(:movie).permit(:title, :instagram_tag, :picture)
   end
 
   def check_admin

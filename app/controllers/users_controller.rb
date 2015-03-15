@@ -8,9 +8,13 @@ class UsersController < ApplicationController
 
   end
 
-  expose(:movies)
-  expose(:reviews)
-  
+  expose(:movies) {
+    Movie.order("created_at DESC").all
+  }
+  expose(:reviews) {
+    Review.order("created_at DESC").all
+  }
+
   def profile
   end
 
